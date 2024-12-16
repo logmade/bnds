@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proof of Dev Entry Scan</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0b0b0f;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Centered box */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Main content box */
+        .main-box {
+            background-color: #16161a;
+            border: 2px solid #6b1f93;
+            border-radius: 10px;
+            padding: 40px 20px;
+            box-shadow: 0 0 15px #8b5fc7;
+            text-align: center;
+            max-width: 500px;
+        }
+
+        /* Hazard icon */
+        .hazard-icon {
+            background-color: #33220b;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hazard-icon img {
+            width: 30px;
+            height: auto;
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ffaf40, #b365f6, #4a90e2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        /* Subtext */
+        .subtext {
+            font-size: 18px;
+            color: #d1d1d1;
+            margin-bottom: 30px;
+        }
+
+        /* Start button */
+        .start-btn {
+            background-color: #8b5fc7;
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #8b5fc7;
+        }
+
+        /* Scanning Box */
+        .scanning-box {
+            display: none;
+            background-color: #000;
+            border: 2px solid #6b1f93;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #8b5fc7;
+            width: 450px;
+            height: 450px;
+            text-align: center;
+            margin: 0 auto;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .scanning-box img {
+            width: 350px;
+            height: 300px;
+            margin: 10px 0;
+            background-color: transparent;
+            border-radius: 10px;
+        }
+
+        .loading-text {
+            font-size: 20px;
+            color: #b365f6;
+            margin-bottom: 10px;
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #333;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 5px #b365f6;
+        }
+
+        .loading-progress {
+            width: 0;
+            height: 100%;
+            background-color: #8b5fc7;
+            transition: width 10s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="startScreen">
+        <div class="main-box">
+            <!-- Hazard Icon -->
+            <div class="hazard-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/753/753345.png" alt="Hazard Icon">
+            </div>
+
+            <!-- Gradient Title -->
+            <div class="gradient-text">PROOF OF DEV ENTRY SCAN SYSTEM</div>
+
+            <!-- Subtext -->
+            <div class="subtext">Complete your scan to enter</div>
+
+            <!-- Start Button -->
+            <button class="start-btn" id="startBtn">Begin Scan</button>
+        </div>
+    </div>
+
+    <div class="scanning-box" id="scanningBox">
+        <img src="https://cdn.discordapp.com/attachments/1271521435931775090/1317895044639883294/facescan.gif?ex=6761aa67&is=676058e7&hm=0d5108f48f0912a3e60e22e69d612c2d166594cee4ae7a51c570e234979c4067&" alt="Scanning GIF">
+        <div class="loading-text" id="loadingText">Initializing Scan...</div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+    </div>
+
+    <script>
+        const startBtn = document.getElementById('startBtn');
+        const startScreen = document.getElementById('startScreen');
+        const scanningBox = document.getElementById('scanningBox');
+        const loadingProgress = document.getElementById('loadingProgress');
+        const loadingText = document.getElementById('loadingText');
+
+        const prompts = [
+            "DETECTING CRASHOUT POTENTIAL",
+            "CHECKING CHIEF KIEF KNOWLEDGE",
+            "CHECKING SKIN COLOUR",
+            "RUNNING BAND FOR BAND EMULATOR",
+            "PROCESSING SOLANA BALANCE"
+        ];
+
+        startBtn.addEventListener('click', () => {
+            startScreen.style.display = 'none';
+            scanningBox.style.display = 'block';
+            loadingProgress.style.width = '0%';
+
+            let index = 0;
+            loadingText.textContent = prompts[index];
+            const interval = setInterval(() => {
+                index++;
+                if (index < prompts.length) {
+                    loadingText.textContent = prompts[index];
+                } else {
+                    clearInterval(interval);
+                    loadingText.textContent = "SCAN COMPLETE";
+                }
+            }, 2000);
+
+            setTimeout(() => {
+                loadingProgress.style.width = '100%';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
